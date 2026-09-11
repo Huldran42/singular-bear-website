@@ -188,18 +188,29 @@ void main() {
 `;
 
 export function LiquidGlassField() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const hostRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const surface = canvas;
+    const host = hostRef.current;
+    if (!host) return;
 
-    const renderer = new THREE.WebGLRenderer({
-      canvas: surface,
-      alpha: true,
-      antialias: true,
-    });
+    const surface = document.createElement('canvas');
+    surface.className = 'absolute inset-0 h-full w-full cursor-grab touch-none';
+    host.prepend(surface);
+
+    let renderer: THREE.WebGLRenderer;
+    try {
+      renderer = new THREE.WebGLRenderer({
+        canvas: surface,
+        alpha: true,
+        antialias: true,
+        powerPreference: 'high-performance',
+        failIfMajorPerformanceCaveat: false,
+      });
+    } catch {
+      surface.remove();
+      return;
+    }
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.75));
     renderer.setClearColor(0x000000, 0);
 
@@ -477,15 +488,13 @@ export function LiquidGlassField() {
       cubeTarget.dispose();
       probeStudio.dispose();
       renderer.dispose();
+      renderer.forceContextLoss();
+      surface.remove();
     };
   }, []);
 
   return (
-    <div className="absolute inset-0 overflow-hidden">
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 h-full w-full cursor-grab touch-none"
-      />
+    <div ref={hostRef} className="absolute inset-0 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-linear-to-r from-studio-bg from-0% via-studio-bg/45 to-transparent to-55%" />
       <div className="pointer-events-none absolute inset-0 bg-linear-to-t from-studio-bg/35 via-transparent to-transparent" />
     </div>
