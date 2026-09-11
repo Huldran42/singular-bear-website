@@ -16,11 +16,12 @@ export default function ProductsPage() {
       <div className="mx-auto max-w-[1400px] px-5 pb-24 pt-32 sm:px-8 lg:px-12">
         <PageIntro
           eyebrow="Catalog"
-          title="Shaders and worlds, ready to ship."
+          title="Shaders and worlds."
           description="Every pack is documented, previewed and sold through the Unity Asset Store."
+          inlineEyebrow
         />
         <div className="mt-12">
-          <ProductGrid products={products} />
+          <ProductGrid products={products} compact />
         </div>
       </div>
     </main>

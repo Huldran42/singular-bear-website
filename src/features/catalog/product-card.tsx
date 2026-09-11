@@ -1,8 +1,15 @@
 import Link from 'next/link';
 import { CoverImage } from '@/components/media/cover-image';
+import { cn } from '@/lib/utils';
 import type { Product } from '@/lib/products';
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({
+  product,
+  compact,
+}: {
+  product: Product;
+  compact?: boolean;
+}) {
   return (
     <Link
       href={`/products/${product.slug}`}
@@ -14,7 +21,7 @@ export function ProductCard({ product }: { product: Product }) {
         className="aspect-[3/2] rounded-none"
         imageClassName="group-hover:scale-[1.05]"
       />
-      <div className="p-5 sm:p-6">
+      <div className={cn('p-5 sm:p-6', compact && 'p-4 sm:p-4')}>
         <div className="flex items-center justify-between gap-3">
           <p className="text-xs font-semibold tracking-[0.14em] text-studio-subtle uppercase">
             {product.category}
@@ -23,10 +30,20 @@ export function ProductCard({ product }: { product: Product }) {
             {product.status ?? product.price ?? 'View'}
           </p>
         </div>
-        <h2 className="mt-3 text-xl font-semibold tracking-tight text-studio-text transition-colors group-hover:text-studio-accent">
+        <h2
+          className={cn(
+            'mt-3 text-xl font-semibold tracking-tight text-studio-text transition-colors group-hover:text-studio-accent',
+            compact && 'mt-2 text-lg',
+          )}
+        >
           {product.title}
         </h2>
-        <p className="mt-2 text-sm leading-relaxed text-studio-muted">
+        <p
+          className={cn(
+            'mt-2 text-sm leading-relaxed text-studio-muted',
+            compact && 'mt-1.5',
+          )}
+        >
           {product.summary}
         </p>
       </div>

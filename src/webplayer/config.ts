@@ -1,5 +1,3 @@
-import { getProduct } from '@/lib/products';
-
 export type PackDemo = {
   slug: string;
   productSlug: string;
@@ -8,21 +6,6 @@ export type PackDemo = {
   image: string;
   gallery: string[];
   videoId?: string;
-};
-
-export type PackExperience = PackDemo & {
-  category: string;
-  description: string;
-  features: string[];
-  pipelines: string[];
-  version: string;
-  unityVersion: string;
-  releaseDate?: string;
-  fileSize?: string;
-  price: string | null;
-  status?: string;
-  storeUrl?: string;
-  webglUrl?: string;
 };
 
 export const packDemos: PackDemo[] = [
@@ -81,31 +64,4 @@ export const packDemos: PackDemo[] = [
 
 export function getPackDemo(slug: string) {
   return packDemos.find((pack) => pack.slug === slug);
-}
-
-export function getPackExperience(
-  slug: string,
-  webglUrl?: string,
-): PackExperience | undefined {
-  const demo = getPackDemo(slug);
-  if (!demo) return undefined;
-
-  const product = getProduct(demo.productSlug);
-  if (!product) return undefined;
-
-  return {
-    ...demo,
-    category: product.category,
-    description: product.description,
-    features: product.features,
-    pipelines: product.pipelines,
-    version: product.version,
-    unityVersion: product.unityVersion,
-    releaseDate: product.releaseDate,
-    fileSize: product.fileSize,
-    price: product.price,
-    status: product.status,
-    storeUrl: product.storeUrl,
-    webglUrl,
-  };
 }
