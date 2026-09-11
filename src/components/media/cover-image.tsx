@@ -5,6 +5,7 @@ type CoverImageProps = {
   src: string;
   alt: string;
   className?: string;
+  imageClassName?: string;
   priority?: boolean;
   sizes?: string;
 };
@@ -13,6 +14,7 @@ export function CoverImage({
   src,
   alt,
   className,
+  imageClassName,
   priority,
   sizes = '(min-width: 1024px) 50vw, 100vw',
 }: CoverImageProps) {
@@ -29,7 +31,10 @@ export function CoverImage({
         fill
         sizes={sizes}
         priority={priority}
-        className="object-cover"
+        className={cn(
+          'object-cover transition-transform duration-700 ease-out',
+          imageClassName,
+        )}
       />
     </div>
   );
