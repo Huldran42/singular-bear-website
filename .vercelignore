@@ -1,0 +1,13 @@
+.next
+.git
+.openai
+.wrangler
+dist
+scripts/create-repo.cmd
+scripts/gh-login.cmd
+scripts/gh-push.cmd
+scripts/gh-refresh-workflow.cmd
+scripts/vercel-login.cmd
+scripts/vercel-preview.cmd
+scripts/watch-gh-auth.mjs
+webplayer/source-builds
