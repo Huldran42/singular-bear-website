@@ -39,8 +39,8 @@ export function ProductCarousel({ products }: { products: Product[] }) {
   const active = products[index];
 
   return (
-    <div className="relative">
-      <div className="relative mx-auto h-[280px] w-full max-w-[640px] [perspective:1200px] sm:h-[340px]">
+    <div className="relative h-[420px] sm:h-[460px]">
+      <div className="relative mx-auto h-[280px] w-full max-w-[640px] overflow-hidden sm:h-[320px]">
         {products.map((product, i) => {
           const raw = i - index;
           const offset =
@@ -55,28 +55,27 @@ export function ProductCarousel({ products }: { products: Product[] }) {
               aria-label={product.title}
               aria-current={offset === 0 ? 'true' : undefined}
               tabIndex={offset === 0 ? 0 : -1}
-              className="absolute top-0 left-1/2 w-[72%] max-w-[420px] origin-center rounded-[18px] transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
+              className="absolute top-0 left-1/2 w-[68%] max-w-[380px] origin-center rounded-[18px] bg-studio-deep transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]"
               style={{
                 zIndex: 20 - abs,
-                transform: `translateX(calc(-50% + ${offset * 42}%)) translateZ(${-abs * 70}px) rotateY(${offset * -14}deg) scale(${1 - abs * 0.12})`,
-                opacity: abs === 0 ? 1 : abs === 1 ? 0.55 : 0.22,
+                transform: `translateX(calc(-50% + ${offset * 38}%)) scale(${1 - abs * 0.1})`,
                 pointerEvents: abs === 0 ? 'auto' : 'none',
               }}
             >
-              <span className="relative block aspect-[16/10] overflow-hidden rounded-[18px] border border-studio-line bg-studio-deep shadow-[0_22px_50px_rgba(8,12,14,0.28)]">
+              <span className="relative block aspect-[16/10] overflow-hidden rounded-[18px] border border-studio-line bg-studio-deep shadow-[0_22px_50px_rgba(8,12,14,0.45)]">
                 <Image
                   src={product.image}
                   alt={product.title}
                   fill
                   className="object-cover"
-                  sizes="(min-width: 640px) 420px, 72vw"
+                  sizes="(min-width: 640px) 380px, 68vw"
                   priority={i === 0}
                 />
-                <span className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black/70 via-black/20 to-transparent px-4 py-3">
+                <span className="absolute inset-x-0 bottom-0 bg-linear-to-t from-black from-15% via-black/80 to-transparent px-4 py-3">
                   <span className="block text-[11px] font-semibold tracking-[0.16em] text-white/70 uppercase">
                     {product.category}
                   </span>
-                  <span className="mt-0.5 block text-sm font-semibold text-white sm:text-base">
+                  <span className="mt-0.5 block truncate text-sm font-semibold text-white sm:text-base">
                     {product.title}
                   </span>
                 </span>
@@ -86,8 +85,8 @@ export function ProductCarousel({ products }: { products: Product[] }) {
         })}
       </div>
 
-      <div className="mt-6 flex items-center justify-between gap-4">
-        <p className="min-w-0 truncate text-sm text-studio-muted">
+      <div className="mt-6 flex h-12 items-center justify-between gap-4">
+        <p className="min-w-0 truncate text-sm leading-5 text-studio-muted">
           {active ? (
             <>
               <span className="font-medium text-studio-text">{active.title}</span>

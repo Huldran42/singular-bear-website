@@ -16,20 +16,25 @@ export function Hero() {
               <span className="sb-pulse-dot h-1.5 w-1.5 rounded-full bg-studio-accent" />
               Independent Unity studio
             </p>
-            <h1 className="font-heading mt-5 max-w-[13ch] text-5xl font-semibold leading-[0.94] tracking-[-0.04em] sm:text-7xl lg:text-[5.25rem]">
-              Materials with a{' '}
+            <h1 className="font-heading mt-5 text-5xl font-semibold leading-[0.96] tracking-[-0.04em] sm:text-7xl lg:text-[5.25rem]">
+              Materials
+              <br />
+              with a{' '}
               <em className="font-heading italic text-studio-accent">pulse.</em>
             </h1>
-            <p className="mt-6 max-w-md text-lg leading-relaxed text-studio-muted sm:text-xl">
-              Singular Bear is a tiny studio with a stubborn taste: shaders you
-              can art-direct, and painted worlds that still read in motion.
-            </p>
+            <div className="mt-6 max-w-md space-y-3 text-lg leading-relaxed text-studio-muted text-pretty sm:text-xl">
+              <p>Production-ready Unity shaders and stylized assets.</p>
+              <p>
+                The same attention to motion, shading and feel carries into
+                every Singular Bear product.
+              </p>
+            </div>
             <div className="pointer-events-auto mt-8 flex flex-wrap gap-3">
-              <Link href="/products" className="sb-btn sb-btn-primary">
-                See the work <ArrowRightIcon />
+              <Link href="/demo" className="sb-btn sb-btn-primary">
+                Try live Demo
               </Link>
-              <Link href="/documentation" className="sb-btn sb-btn-outline">
-                Read the docs
+              <Link href="/products" className="sb-btn sb-btn-outline">
+                Explore the possibilities <ArrowRightIcon />
               </Link>
             </div>
           </div>

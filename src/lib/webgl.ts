@@ -1,6 +1,8 @@
 import { existsSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { cache } from 'react';
+import { getProduct, products } from '@/lib/products';
+import { packDemos } from '@/webplayer/config';
 
 const ignoredDirectories = new Set(['Build', 'TemplateData']);
 
@@ -59,4 +61,46 @@ export function getWebglUrl(...slugs: Array<string | undefined>) {
   }
 
   return undefined;
+}
+
+export type LiveDemo = {
+  slug: string;
+  title: string;
+  image: string;
+  category: string;
+  summary: string;
+};
+
+export function getLiveDemos(): LiveDemo[] {
+  const seen = new Set<string>();
+  const demos: LiveDemo[] = [];
+
+  for (const pack of packDemos) {
+    const url = getWebglUrl(pack.slug, pack.productSlug);
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    const product = getProduct(pack.productSlug);
+    demos.push({
+      slug: pack.slug,
+      title: pack.title,
+      image: pack.image,
+      category: product?.category ?? 'Live demo',
+      summary: product?.summary ?? pack.subtitle,
+    });
+  }
+
+  for (const product of products) {
+    const url = getWebglUrl(product.slug);
+    if (!url || seen.has(url)) continue;
+    seen.add(url);
+    demos.push({
+      slug: product.slug,
+      title: product.title,
+      image: product.image,
+      category: product.category,
+      summary: product.summary,
+    });
+  }
+
+  return demos;
 }

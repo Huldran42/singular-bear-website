@@ -368,23 +368,31 @@ export function LiquidGlassField() {
 
     function onUp(event: PointerEvent) {
       if (grabbed < 0) return;
-      blobs[grabbed].vx *= 0.75;
-      blobs[grabbed].vy *= 0.75;
-      blobs[grabbed].vz *= 0.75;
+      const pulled = blobs[grabbed];
+      if (pulled) {
+        pulled.vx *= 0.75;
+        pulled.vy *= 0.75;
+        pulled.vz *= 0.75;
+      }
       grabbed = -1;
       surface.releasePointerCapture(event.pointerId);
       surface.style.cursor = 'grab';
     }
 
     function bakeProbe() {
-      cubeCamera.update(renderer, probeStudio.scene);
-      void LightProbeGenerator.fromCubeRenderTarget(renderer, cubeTarget).then(
-        (probe) => {
-          probe.sh.coefficients.forEach((coeff, index) => {
+      try {
+        cubeCamera.update(renderer, probeStudio.scene);
+      } catch {
+        return;
+      }
+
+      void LightProbeGenerator.fromCubeRenderTarget(renderer, cubeTarget)
+        .then((probe) => {
+          probe?.sh?.coefficients?.forEach((coeff, index) => {
             shUniforms[index]?.copy(coeff);
           });
-        },
-      );
+        })
+        .catch(() => undefined);
     }
 
     function resize() {

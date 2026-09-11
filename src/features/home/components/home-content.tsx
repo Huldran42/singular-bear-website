@@ -17,7 +17,12 @@ const principles = [
   },
 ] as const;
 
-const crafts = ['Lookdev', 'URP shaders', 'Mobile pipeline'] as const;
+const crafts = [
+  'Technical art',
+  'Lookdev',
+  'URP Shader',
+  'Real-time',
+] as const;
 
 export function HomeContent() {
   return (
@@ -36,10 +41,10 @@ export function HomeContent() {
               </p>
               <div className="pt-1">
                 <p className="text-lg leading-snug text-studio-text">
-                  years in video game
+                  years working across game art for mobile & console
                 </p>
                 <p className="mt-1 text-lg leading-snug text-studio-muted">
-                  Lookdev, URP shaders, mobile pipeline.
+                  Technical art, lookdev, URP Shader and real-time production.
                 </p>
               </div>
             </div>
@@ -63,7 +68,7 @@ export function HomeContent() {
       <section className="mx-auto max-w-[1400px] px-5 py-20 sm:px-8 sm:py-28 lg:px-12">
         <p className="font-mono text-sm text-studio-accent">How it works</p>
         <h2 className="font-heading mt-4 max-w-[16ch] text-3xl font-semibold tracking-[-0.03em] sm:text-4xl">
-          A vitrine, then the store.
+          Explore here, get it on the Asset Store.
         </h2>
         <div className="mt-12 grid gap-10 sm:grid-cols-3">
           {principles.map((item) => (
