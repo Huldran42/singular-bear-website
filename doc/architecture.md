@@ -1,6 +1,6 @@
 # Architecture du site Singular Bear
 
-Le projet suit l'App Router de Next.js avec une séparation stricte entre les routes, les composants partagés et les fonctionnalités métier. Le runtime cible Vercel (Node), pas Cloudflare Workers.
+Le projet suit l'App Router de Next.js avec une séparation stricte entre les routes, les composants partagés et les fonctionnalités métier. Le runtime cible Vercel. Le code source vit sur GitHub.
 
 ## Structure
 

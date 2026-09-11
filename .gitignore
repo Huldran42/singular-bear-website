@@ -13,7 +13,6 @@
 
 # next.js
 /.next/
-/.vinext/
 /out/
 
 # misc
@@ -40,7 +39,5 @@ yarn-error.log*
 .vercel
 *.tsbuildinfo
 /dist/
-/.wrangler/
 /outputs/
-/work/
 /webplayer/source-builds/*.zip

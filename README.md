@@ -1,5 +1,7 @@
 # Singular Bear Studio — website
 
+Dépôt : [Huldran42/singular-bear-website](https://github.com/Huldran42/singular-bear-website).
+
 Site vitrine du studio Singular Bear : catalogue d'assets Unity, documentation des manuels et démos jouables (Unity WebGL) pour les packs vendus sur l'Unity Asset Store. Les achats se finalisent sur l'Asset Store — ce site sert de vitrine, de centre de démonstration et de documentation.
 
 ## Stack
@@ -45,22 +47,16 @@ Ne jamais committer `.env.local`.
 | `npm run dev` | Serveur de développement Next.js |
 | `npm run build` | Build de production |
 | `npm start` | Sert le build Next.js |
-| `npm run lint` | Lint (`oxlint`) |
+| `npm run lint` | Vérification TypeScript (`tsc --noEmit`) |
 | `npm run format` | Formatage (`oxfmt`) |
 
 ## Aperçu Vercel
 
-1. Pousser le dépôt sur GitHub.
-2. Importer le projet sur [vercel.com/new](https://vercel.com/new).
-3. Framework : Next.js (détecté).
-4. Renseigner `NEXT_PUBLIC_SITE_URL` pour la Production (ex. `https://singularbear.studio`).
-5. Chaque push ouvre une Preview URL.
+Importer ce dépôt GitHub : [vercel.com/new/import](https://vercel.com/new/import?s=Huldran42/singular-bear-website).
 
-En CLI, après `npx vercel login` :
-
-```bash
-npx vercel
-```
+1. Framework : Next.js (détecté).
+2. Renseigner `NEXT_PUBLIC_SITE_URL` pour la Production (ex. `https://singularbear.studio`).
+3. Chaque push sur `main` ouvre une Preview URL.
 
 ## Structure
 
