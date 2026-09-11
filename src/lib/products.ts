@@ -29,8 +29,7 @@ export const products: Product[] = [
     summary: 'Physically based glass with art-directable surface detail.',
     description:
       'Build clean, weathered, iridescent or magical glass inside URP. Every layer is designed to stay readable while you art-direct the final surface.',
-    price: null,
-    status: 'Coming soon',
+    price: '$19.99',
     image: '/Banner_Glass_06.png',
     gallery: [
       '/Banner_Glass_01.png',
@@ -40,8 +39,9 @@ export const products: Product[] = [
       '/Banner_Glass_05.png',
       '/Banner_Glass_06.png',
     ],
-    version: 'Preview',
-    unityVersion: 'Unity URP',
+    storeUrl: 'https://assetstore.unity.com/publishers/102041',
+    version: '1.0',
+    unityVersion: '2021.3 LTS or newer',
     pipelines: ['URP'],
     features: [
       'Physically based transparent glass',
@@ -142,7 +142,7 @@ export const products: Product[] = [
     summary: 'A moody graveyard kit for gothic top-down worlds.',
     description:
       'Compose atmospheric cemetery scenes from hand-painted tombs, foliage, paths and set dressing made for dark fantasy games.',
-    price: '$24.99',
+    price: '$9.99',
     image: '/assets/products/graveyard.jpg',
     gallery: ['/assets/products/graveyard.jpg'],
     videoId: 'RN-jU5b_nBg',

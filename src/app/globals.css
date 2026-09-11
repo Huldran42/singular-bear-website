@@ -1,6 +1,5 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
-@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -176,6 +175,11 @@ body {
     @apply font-sans;
     scroll-behavior: smooth;
   }
+}
+
+.sb-header {
+  background: color-mix(in oklab, var(--studio-bg) 82%, transparent);
+  backdrop-filter: blur(18px);
 }
 
 ::selection {

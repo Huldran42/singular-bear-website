@@ -1,6 +1,13 @@
 import type { Metadata } from 'next';
 import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
-import { siteUrl } from '@/lib/site';
+import { SiteChrome } from '@/components/layout/site-chrome';
+import {
+  artstationUrl,
+  assetStorePublisherUrl,
+  contactEmail,
+  siteUrl,
+  studioName,
+} from '@/lib/site';
 import './globals.css';
 
 const geistSans = Geist({
@@ -21,7 +28,7 @@ const fraunces = Fraunces({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
-  applicationName: 'Singular Bear Studio',
+  applicationName: studioName,
   title: {
     default: 'Singular Bear Studio | Unity shaders and 2D worlds',
     template: '%s | Singular Bear Studio',
@@ -85,14 +92,11 @@ export default function RootLayout({
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    name: 'Singular Bear Studio',
+    name: studioName,
     url: siteUrl,
     logo: `${siteUrl}/SB_Logo.png`,
-    email: 'singularbear.studio@gmail.com',
-    sameAs: [
-      'https://assetstore.unity.com/publishers/102041',
-      'https://www.artstation.com/singularbearstudio1/profile',
-    ],
+    email: contactEmail,
+    sameAs: [assetStorePublisherUrl, artstationUrl],
   };
 
   return (
@@ -108,7 +112,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
-        {children}
+        <SiteChrome>{children}</SiteChrome>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

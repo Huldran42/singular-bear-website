@@ -4,51 +4,76 @@ Site vitrine du studio Singular Bear : catalogue d'assets Unity, documentation d
 
 ## Stack
 
-- [Next.js](https://nextjs.org) (App Router) exécuté via [vinext](https://www.npmjs.com/package/vinext) sur [Vite](https://vitejs.dev)
-- TypeScript strict, React 19
-- Tailwind CSS 4 + [shadcn/ui](https://ui.shadcn.com)
-- Déploiement [Cloudflare Workers](https://workers.cloudflare.com) via `wrangler`
+- [Next.js](https://nextjs.org) 15 (App Router) + React 19
+- TypeScript strict
+- Tailwind CSS 4
+- Déploiement [Vercel](https://vercel.com)
 - Lint/format via [oxlint](https://oxc.rs/docs/guide/usage/linter.html) / [oxfmt](https://oxc.rs)
 
 ## Prérequis
 
-- Node.js >= 22.13.0
+- Node.js 22 (voir `.nvmrc`)
 
 ## Démarrage
 
 ```bash
+cp .env.example .env.local
 npm install
 npm run dev
 ```
 
+Ouvre [http://localhost:3000](http://localhost:3000).
+
+## Variables d'environnement
+
+Copier `.env.example` vers `.env.local` en local, et les renseigner dans **Vercel → Project → Settings → Environment Variables**.
+
+| Variable | Obligatoire | Rôle |
+| --- | --- | --- |
+| `NEXT_PUBLIC_SITE_URL` | Production | Origine canonique (sitemap, Open Graph, JSON-LD). En preview Vercel, l'app utilise `https://$VERCEL_URL` si cette variable est vide. |
+| `NEXT_PUBLIC_CONTACT_EMAIL` | Non | Email affiché sur Support. Défaut : `singularbear.studio@gmail.com`. |
+| `NEXT_PUBLIC_PAYPAL_URL` | Non | Lien de don. Si vide, le bouton PayPal est masqué. |
+| `NEXT_PUBLIC_ASSET_STORE_URL` | Non | Page éditeur Unity Asset Store. |
+| `NEXT_PUBLIC_ARTSTATION_URL` | Non | Profil ArtStation. |
+
+Ne jamais committer `.env.local`.
+
 ## Scripts
 
-| Commande         | Description                                                      |
-| ---------------- | ---------------------------------------------------------------- |
-| `npm run dev`    | Serveur de développement (`vinext dev`)                          |
-| `npm run build`  | Build de production (`vinext build`)                             |
-| `npm start`      | Sert le build via `wrangler dev` (simulateur Cloudflare Workers) |
-| `npm run lint`   | Lint du code (`oxlint`)                                          |
-| `npm run format` | Formatage du code (`oxfmt`)                                      |
+| Commande | Description |
+| --- | --- |
+| `npm run dev` | Serveur de développement Next.js |
+| `npm run build` | Build de production |
+| `npm start` | Sert le build Next.js |
+| `npm run lint` | Lint (`oxlint`) |
+| `npm run format` | Formatage (`oxfmt`) |
 
-## Structure du projet
+## Aperçu Vercel
+
+1. Pousser le dépôt sur GitHub.
+2. Importer le projet sur [vercel.com/new](https://vercel.com/new).
+3. Framework : Next.js (détecté).
+4. Renseigner `NEXT_PUBLIC_SITE_URL` pour la Production (ex. `https://singularbear.studio`).
+5. Chaque push ouvre une Preview URL.
+
+En CLI, après `npx vercel login` :
+
+```bash
+npx vercel
+```
+
+## Structure
 
 - `src/app` — routes, métadonnées SEO, sitemap/robots.
-- `src/features` — composants métier (accueil, catalogue, documentation).
-- `src/components` — briques partagées (layout, media, motion, thème, `ui/` = shadcn).
-- `src/lib` — données produits/manuels et utilitaires.
-- `src/webplayer` — configuration et logique des démos Unity WebGL.
-- `public/webplayer` — exports Unity WebGL servis par le site (voir `public/webplayer/README.md`).
-- `webplayer/source-builds` — archives ZIP originales des builds Unity WebGL (non déployées).
-- `doc/` — documentation interne (voir ci-dessous).
+- `src/features` — composants métier (accueil, catalogue, documentation, packs, support).
+- `src/components` — layout, média, thème.
+- `src/lib` — données produits/manuels, URL du site, détection WebGL.
+- `src/webplayer` — configuration des démos et lecteur Unity.
+- `public/webplayer` — exports Unity WebGL servis par le site.
+- `doc/` — documentation interne.
 
-Détails complets : [`doc/architecture.md`](doc/architecture.md).
+Détails : [`doc/architecture.md`](doc/architecture.md).
 
 ## Mettre à jour le contenu
 
-Ajouter un produit, une vidéo ou un export Unity WebGL : voir [`doc/content-workflow.md`](doc/content-workflow.md).
-
-## Notes
-
-- `vinext` est encore en version bêta ; surveiller les mises à jour avant de dépendre de fonctionnalités avancées.
-- Aucun test automatisé n'est en place actuellement.
+Ajouter un produit, une vidéo ou un export Unity WebGL : [`doc/content-workflow.md`](doc/content-workflow.md).

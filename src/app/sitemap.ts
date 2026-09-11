@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { products } from '@/lib/products';
 import { siteUrl } from '@/lib/site';
+import { packDemos } from '@/webplayer/config';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const productRoutes: MetadataRoute.Sitemap = products.flatMap((product) => [
@@ -27,5 +28,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${siteUrl}/packs`, changeFrequency: 'monthly', priority: 0.8 },
     { url: `${siteUrl}/support`, changeFrequency: 'yearly', priority: 0.4 },
     ...productRoutes,
+    ...packDemos.map((pack) => ({
+      url: `${siteUrl}/packs/${pack.slug}`,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
   ];
 }

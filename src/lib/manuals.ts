@@ -1,4 +1,4 @@
-import type { Product } from './products';
+import { products, type Product } from './products';
 
 export type ManualBlock = {
   id: string;
@@ -74,6 +74,12 @@ const sharedEnvironmentSections = (product: Product): ManualBlock[] => [
     ],
   },
 ];
+
+export function getManual(slug: string) {
+  const product = products.find((entry) => entry.slug === slug);
+  if (!product) return undefined;
+  return createManual(product);
+}
 
 export function createManual(product: Product): Manual {
   if (product.slug === 'pro-glass-shader') {

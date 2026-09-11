@@ -27,11 +27,17 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local environment
-.env*
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# keep the template
+!.env.example
 
 # deployment and generated files
 .vercel
-next-env.d.ts
 *.tsbuildinfo
 /dist/
 /.wrangler/

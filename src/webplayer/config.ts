@@ -1,3 +1,5 @@
+import { getProduct } from '@/lib/products';
+
 export type PackDemo = {
   slug: string;
   productSlug: string;
@@ -76,3 +78,34 @@ export const packDemos: PackDemo[] = [
     videoId: 'RN-jU5b_nBg',
   },
 ];
+
+export function getPackDemo(slug: string) {
+  return packDemos.find((pack) => pack.slug === slug);
+}
+
+export function getPackExperience(
+  slug: string,
+  webglUrl?: string,
+): PackExperience | undefined {
+  const demo = getPackDemo(slug);
+  if (!demo) return undefined;
+
+  const product = getProduct(demo.productSlug);
+  if (!product) return undefined;
+
+  return {
+    ...demo,
+    category: product.category,
+    description: product.description,
+    features: product.features,
+    pipelines: product.pipelines,
+    version: product.version,
+    unityVersion: product.unityVersion,
+    releaseDate: product.releaseDate,
+    fileSize: product.fileSize,
+    price: product.price,
+    status: product.status,
+    storeUrl: product.storeUrl,
+    webglUrl,
+  };
+}
