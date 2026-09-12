@@ -6,7 +6,8 @@ import { SiteHeader } from '@/components/layout/site-header';
 
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const bare = pathname.startsWith('/webplayer');
+  const bare =
+    pathname.startsWith('/webplayer') || pathname.startsWith('/insights');
 
   if (bare) return children;
 

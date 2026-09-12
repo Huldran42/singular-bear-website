@@ -321,16 +321,6 @@ body {
   -webkit-backdrop-filter: blur(28px) saturate(1.35);
 }
 
-.sb-fan-card {
-  transform: translate(calc(-50% + var(--fan-x)), var(--fan-y))
-    rotate(var(--fan-r));
-}
-
-.sb-fan-card:hover {
-  z-index: 30;
-  transform: translate(-50%, -0.85rem) rotate(0deg) scale(1.05);
-}
-
 @layer components {
   .sb-btn {
     @apply inline-flex h-12 items-center justify-center gap-2 rounded-full px-5 text-sm font-semibold outline-none transition-[background-color,border-color,box-shadow,transform] duration-200 focus-visible:ring-2 focus-visible:ring-studio-accent/70;

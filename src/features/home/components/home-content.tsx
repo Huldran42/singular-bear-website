@@ -17,12 +17,7 @@ const principles = [
   },
 ] as const;
 
-const crafts = [
-  'Technical art',
-  'Lookdev',
-  'URP Shader',
-  'Real-time',
-] as const;
+const crafts = ['Lookdev', 'URP shaders', 'Mobile pipeline'] as const;
 
 export function HomeContent() {
   return (
@@ -41,10 +36,10 @@ export function HomeContent() {
               </p>
               <div className="pt-1">
                 <p className="text-lg leading-snug text-studio-text">
-                  years working across game art for mobile & console
+                  years in video game
                 </p>
                 <p className="mt-1 text-lg leading-snug text-studio-muted">
-                  Technical art, lookdev, URP Shader and real-time production.
+                  Lookdev, URP shaders, mobile pipeline.
                 </p>
               </div>
             </div>
@@ -95,7 +90,11 @@ export function HomeContent() {
               studio.
             </p>
           </div>
-          <Link href="/products" className="sb-btn sb-btn-primary">
+          <Link
+            href="/products"
+            data-insight="home-browse-products"
+            className="sb-btn sb-btn-primary"
+          >
             Browse products
           </Link>
         </div>

@@ -40,7 +40,7 @@ export function ProductCarousel({ products }: { products: Product[] }) {
 
   return (
     <div className="relative h-[420px] sm:h-[460px]">
-      <div className="relative mx-auto h-[280px] w-full max-w-[640px] overflow-hidden sm:h-[320px]">
+      <div className="relative mx-auto h-[280px] w-full max-w-[640px] sm:h-[320px]">
         {products.map((product, i) => {
           const raw = i - index;
           const offset =
@@ -59,6 +59,7 @@ export function ProductCarousel({ products }: { products: Product[] }) {
               style={{
                 zIndex: 20 - abs,
                 transform: `translateX(calc(-50% + ${offset * 38}%)) scale(${1 - abs * 0.1})`,
+                opacity: abs === 0 ? 1 : abs === 1 ? 0.58 : 0.28,
                 pointerEvents: abs === 0 ? 'auto' : 'none',
               }}
             >

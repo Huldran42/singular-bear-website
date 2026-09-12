@@ -52,6 +52,7 @@ export function ProductDetail({
           {webglUrl ? (
             <Link
               href={`/webplayer/${product.slug}`}
+              data-insight={`product-webplayer-${product.slug}`}
               className="sb-btn sb-btn-primary h-11 w-full shrink-0"
             >
               Launch Web Player
@@ -65,6 +66,7 @@ export function ProductDetail({
               href={product.storeUrl}
               target="_blank"
               rel="noreferrer"
+              data-insight={`product-store-${product.slug}`}
               className="sb-btn sb-btn-outline h-11 w-full shrink-0"
             >
               Buy on Asset Store <ArrowSquareOutIcon />
@@ -72,6 +74,7 @@ export function ProductDetail({
           ) : null}
           <Link
             href={`/documentation/${product.slug}`}
+            data-insight={`product-manual-${product.slug}`}
             className="sb-btn sb-btn-outline h-11 w-full shrink-0"
           >
             Manual

@@ -30,10 +30,18 @@ export function Hero() {
               </p>
             </div>
             <div className="pointer-events-auto mt-8 flex flex-wrap gap-3">
-              <Link href="/demo" className="sb-btn sb-btn-primary">
+              <Link
+                href="/demo"
+                data-insight="hero-demo"
+                className="sb-btn sb-btn-primary"
+              >
                 Try live Demo
               </Link>
-              <Link href="/products" className="sb-btn sb-btn-outline">
+              <Link
+                href="/products"
+                data-insight="hero-explore"
+                className="sb-btn sb-btn-outline"
+              >
                 Explore the possibilities <ArrowRightIcon />
               </Link>
             </div>

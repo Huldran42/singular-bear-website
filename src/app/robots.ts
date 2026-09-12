@@ -6,7 +6,14 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/canvas3d', '/liquidglass-ui', '/ghost', '/prototype'],
+      disallow: [
+        '/canvas3d',
+        '/liquidglass-ui',
+        '/ghost',
+        '/prototype',
+        '/insights',
+        '/api/insights',
+      ],
     },
     sitemap: `${siteUrl}/sitemap.xml`,
   };

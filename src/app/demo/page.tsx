@@ -45,6 +45,7 @@ export default function DemoPage() {
                   </p>
                   <Link
                     href={`/webplayer/${demo.slug}`}
+                    data-insight={`demo-launch-${demo.slug}`}
                     className="sb-btn sb-btn-primary mt-5 h-11 w-full"
                   >
                     Launch WebGL

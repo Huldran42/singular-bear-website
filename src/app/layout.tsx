@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Fraunces, Geist, Geist_Mono } from 'next/font/google';
 import { SiteChrome } from '@/components/layout/site-chrome';
+import { InsightsTracker } from '@/features/insights/tracker';
 import {
   artstationUrl,
   assetStorePublisherUrl,
@@ -113,6 +114,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${fraunces.variable} antialiased`}
       >
         <SiteChrome>{children}</SiteChrome>
+        <InsightsTracker />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
